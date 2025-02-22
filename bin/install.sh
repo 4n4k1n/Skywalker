@@ -75,6 +75,9 @@ if ! grep "paco=" "$RC_FILE" &> /dev/null; then
 	printf "\nalias paco=%s/francinette/tester.sh\n" "$HOME" >> "$RC_FILE"
 fi
 
+python3 -m pip install --upgrade pip setuptools
+python3 -m pip install norminette
+
 # print help
 "$HOME"/francinette/tester.sh --help
 
