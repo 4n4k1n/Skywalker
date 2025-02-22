@@ -44,19 +44,63 @@ int test_single_lstadd_front_multiple_ok(
 
 int test_lstadd_front()
 {
-	int res = test_single_lstadd_front(1,
-		create_list(0), lstnew("new head"), create_list(1, "new head"));
-	res = test_single_lstadd_front(2,
-		create_list(1, "old head"),
-		lstnew("new head"),
-		create_list(2, "new head", "old head")) && res;
-	res = test_single_lstadd_front_multiple_ok(3,
-		create_list(2, "old head", "tail"),
-		*create_list(2, "new head", "lost node"),
-		create_list(3, "new head", "old head", "tail"),
-		create_list(4, "new head", "lost node", "old head", "tail")
-		) && res;
-	return res;
+   int res = test_single_lstadd_front(1,
+       create_list(0), 
+       lstnew("new head"), 
+       create_list(1, "new head"));
+
+   res = test_single_lstadd_front(2,
+       create_list(1, "old head"),
+       lstnew("new head"),
+       create_list(2, "new head", "old head")) && res;
+
+   res = test_single_lstadd_front_multiple_ok(3,
+       create_list(2, "old head", "tail"),
+       *create_list(2, "new head", "lost node"),
+       create_list(3, "new head", "old head", "tail"),
+       create_list(4, "new head", "lost node", "old head", "tail")
+   ) && res;
+
+   res = test_single_lstadd_front(4,
+       create_list(3, "one", "two", "three"),
+       lstnew("zero"),
+       create_list(4, "zero", "one", "two", "three")) && res;
+
+   res = test_single_lstadd_front(5,
+       create_list(2, "world", "!"),
+       lstnew("hello"),
+       create_list(3, "hello", "world", "!")) && res;
+
+   res = test_single_lstadd_front(6,
+       create_list(4, "b", "c", "d", "e"),
+       lstnew("a"),
+       create_list(5, "a", "b", "c", "d", "e")) && res;
+
+   res = test_single_lstadd_front_multiple_ok(7,
+       create_list(3, "three", "four", "five"),
+       *create_list(2, "one", "two"),
+       create_list(4, "one", "three", "four", "five"),
+       create_list(5, "one", "two", "three", "four", "five")
+   ) && res;
+
+   res = test_single_lstadd_front(8,
+       create_list(1, "tail"),
+       lstnew("head"),
+       create_list(2, "head", "tail")) && res;
+
+   res = test_single_lstadd_front_multiple_ok(9,
+       create_list(2, "middle", "end"),
+       *create_list(2, "start", "extra"),
+       create_list(3, "start", "middle", "end"),
+       create_list(4, "start", "extra", "middle", "end")
+   ) && res;
+
+   res = test_single_lstadd_front(10,
+       create_list(5, "v", "w", "x", "y", "z"),
+       lstnew("u"),
+       create_list(6, "u", "v", "w", "x", "y", "z")) && res;
+
+   return res;
 }
 
 int	main()

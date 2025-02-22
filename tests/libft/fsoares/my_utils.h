@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoares- <fsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anakin <anakin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:40:02 by fsoares-          #+#    #+#             */
-/*   Updated: 2022/02/24 18:29:31 by fsoares-         ###   ########.fr       */
+/*   Updated: 2025/02/22 14:43:11 by anakin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "utils/utils.h"
 #include "libft.h"
+#include <stdint.h>
 
 #define create_test_ctype(fn)                                                       \
 	int test_##fn(void)                                                             \

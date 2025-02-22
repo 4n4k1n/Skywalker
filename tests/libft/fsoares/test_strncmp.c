@@ -12,39 +12,48 @@ int single_test_strncmp(int test_number, char *str1, char *str2, size_t n)
 
 int test_strncmp(void)
 {
-	int res = 1;
+   int res = 1;
+   res = single_test_strncmp(1, "", "", 0) && res;
+   res = single_test_strncmp(2, "", "", 1) && res;
+   res = single_test_strncmp(3, "", "", 2) && res;
+   res = single_test_strncmp(4, "test", "", 0) && res;
+   res = single_test_strncmp(5, "test", "", 1) && res;
+   res = single_test_strncmp(6, "test", "", 2) && res;
+   res = single_test_strncmp(7, "", "test", 0) && res;
+   res = single_test_strncmp(8, "", "test", 1) && res;
+   res = single_test_strncmp(9, "", "test", 2) && res;
+   res = single_test_strncmp(10, "teste", "teste", 0) && res;
+   res = single_test_strncmp(12, "teste", "teste", 1) && res;
+   res = single_test_strncmp(13, "teste", "teste", 5) && res;
+   res = single_test_strncmp(14, "teste", "teste", 6) && res;
+   res = single_test_strncmp(15, "teste", "teste", 7) && res;
+   res = single_test_strncmp(16, "teste", "testex", 6) && res;
+   res = single_test_strncmp(17, "teste", "test", 10) && res;
+   res = single_test_strncmp(18, "test", "teste", 10) && res;
+   
+   unsigned char s1[10] = "abcdef";
+   unsigned char s2[10] = "abc\xfdxx";
+   res = single_test_strncmp(19, (char *)s1, (char *)s2, 5) && res;
+   s1[3] = 0;
+   s2[3] = 0;
+   int other = single_test_strncmp(20, (char *)s1, (char *)s2, 7);
+   if (!other) {
+       fprintf(errors_file, BRED "You are not stoping at the '\\0'\n" NC);
+       res = 0;
+   }
 
+   res = single_test_strncmp(21, "hello", "hella", 5) && res;
+   res = single_test_strncmp(22, "hello", "hello world", 8) && res;
+   res = single_test_strncmp(23, "hello\0hidden", "hello\0different", 12) && res;
+   res = single_test_strncmp(24, "abc\n", "abc\n", 5) && res;
+   res = single_test_strncmp(25, "\t\t", "\t\n", 2) && res;
+   res = single_test_strncmp(26, "TEST", "test", 4) && res;
+   res = single_test_strncmp(27, "123", "124", 2) && res;
+   res = single_test_strncmp(28, "abcd", "abcd", 10) && res;
+   res = single_test_strncmp(29, "long string", "long string", 3) && res;
+   res = single_test_strncmp(30, "!@#$%", "!@#$%", 6) && res;
 
-	res = single_test_strncmp(1, "", "", 0) && res;
-	res = single_test_strncmp(2, "", "", 1) && res;
-	res = single_test_strncmp(3, "", "", 2) && res;
-	res = single_test_strncmp(4, "test", "", 0) && res;
-	res = single_test_strncmp(5, "test", "", 1) && res;
-	res = single_test_strncmp(6, "test", "", 2) && res;
-	res = single_test_strncmp(7, "", "test", 0) && res;
-	res = single_test_strncmp(8, "", "test", 1) && res;
-	res = single_test_strncmp(9, "", "test", 2) && res;
-	res = single_test_strncmp(10, "teste", "teste", 0) && res;
-	res = single_test_strncmp(12, "teste", "teste", 1) && res;
-	res = single_test_strncmp(13, "teste", "teste", 5) && res;
-	res = single_test_strncmp(14, "teste", "teste", 6) && res;
-	res = single_test_strncmp(15, "teste", "teste", 7) && res;
-	res = single_test_strncmp(16, "teste", "testex", 6) && res;
-	res = single_test_strncmp(17, "teste", "test", 10) && res;
-	res = single_test_strncmp(18, "test", "teste", 10) && res;
-
-	unsigned char s1[10] = "abcdef";
-	unsigned char s2[10] = "abc\xfdxx";
-	res = single_test_strncmp(19, (char *)s1, (char *)s2, 5) && res;
-
-	s1[3] = 0;
-	s2[3] = 0;
-	int other = single_test_strncmp(20, (char *)s1, (char *)s2, 7);
-	if (!other) {
-		fprintf(errors_file, BRED "You are not stoping at the '\\0'\n" NC);
-		res = 0;
-	}
-	return res;
+   return res;
 }
 
 int	main()

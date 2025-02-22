@@ -75,24 +75,47 @@ int test_single_split(int test_number, char *s, char c, char **expected)
 
 int test_split()
 {
-	char **expected = init_str_array(2, "hello!", NULL);
-	int res = test_single_split(1, "hello!", ' ', expected);
-
-	res = test_single_split(2, "xxxxxxxxhello!", 'x', expected) && res;
-	res = test_single_split(3, "hello!zzzzzzzz", 'z', expected) && res;
-	res = test_single_split(4, "\11\11\11\11hello!\11\11\11\11", '\11', expected) && res;
-
-	expected = init_str_array(1, NULL);
-	res = test_single_split(5, "", 'a', expected) && res;
-	res = test_single_split(6, "ggggggggggg", 'g', expected) && res;
-
-	expected = init_str_array(5, "1", "2a,", "3", "--h", NULL);
-	res = test_single_split(7, "^^^1^^2a,^^^^3^^^^--h^^^^", '^', expected) && res;
-
-	expected = init_str_array(2, "nonempty", NULL);
-	res = test_single_split(8, "nonempty", '\0', expected) && res;
-
-	return res;
+    char **expected = init_str_array(2, "hello!", NULL);
+    int res = test_single_split(1, "hello!", ' ', expected);
+    res = test_single_split(2, "xxxxxxxxhello!", 'x', expected) && res;
+    res = test_single_split(3, "hello!zzzzzzzz", 'z', expected) && res;
+    res = test_single_split(4, "\11\11\11\11hello!\11\11\11\11", '\11', expected) && res;
+    
+    expected = init_str_array(1, NULL);
+    res = test_single_split(5, "", 'a', expected) && res;
+    res = test_single_split(6, "ggggggggggg", 'g', expected) && res;
+    
+    expected = init_str_array(5, "1", "2a,", "3", "--h", NULL);
+    res = test_single_split(7, "^^^1^^2a,^^^^3^^^^--h^^^^", '^', expected) && res;
+    
+    expected = init_str_array(2, "nonempty", NULL);
+    res = test_single_split(8, "nonempty", '\0', expected) && res;
+    
+    expected = init_str_array(6, "One", "Two", "Three", "Four", "Five", NULL);
+    res = test_single_split(9, "One,Two,Three,Four,Five", ',', expected) && res;
+    
+    expected = init_str_array(3, "abc", "def", NULL);
+    res = test_single_split(10, "abc   def", ' ', expected) && res;
+    
+    expected = init_str_array(4, "", "", "", NULL);
+    res = test_single_split(11, "...", '.', expected) && res;
+    
+    expected = init_str_array(4, "Test", "With", "Spaces", NULL);
+    res = test_single_split(12, "Test    With  Spaces", ' ', expected) && res;
+    
+    expected = init_str_array(3, "a", "b", NULL);
+    res = test_single_split(13, "a\nb", '\n', expected) && res;
+    
+    expected = init_str_array(5, "", "Text", "", "Here", NULL);
+    res = test_single_split(14, "##Text##Here", '#', expected) && res;
+    
+    expected = init_str_array(2, "LongTextWithoutDelimiter", NULL);
+    res = test_single_split(15, "LongTextWithoutDelimiter", '@', expected) && res;
+    
+    expected = init_str_array(6, "", "1", "22", "333", "4444", NULL);
+    res = test_single_split(16, "|1|22|333|4444", '|', expected) && res;
+    
+    return res;
 }
 
 int main()

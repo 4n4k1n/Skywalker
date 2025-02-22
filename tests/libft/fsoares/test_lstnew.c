@@ -22,11 +22,30 @@ int test_single_lstnew(int test_number, char *content, t_list *expected)
 
 int test_lstnew()
 {
-	t_list expected;
-	expected.next = NULL;
-	int res = test_single_lstnew(1, NULL, &expected);
-	res = test_single_lstnew(2, "hahaha", &expected) && res;
-	return res;
+   t_list expected;
+   expected.next = NULL;
+   
+   int res = test_single_lstnew(1, NULL, &expected);
+   
+   res = test_single_lstnew(2, "hahaha", &expected) && res;
+   
+   res = test_single_lstnew(3, "test", &expected) && res;
+   
+   res = test_single_lstnew(4, "", &expected) && res;
+   
+   res = test_single_lstnew(5, "hello world", &expected) && res;
+   
+   res = test_single_lstnew(6, "123456789", &expected) && res;
+   
+   res = test_single_lstnew(7, "a", &expected) && res;
+   
+   res = test_single_lstnew(8, "longer test string", &expected) && res;
+   
+   res = test_single_lstnew(9, "!@#$%^&*()", &expected) && res;
+   
+   res = test_single_lstnew(10, "TEST", &expected) && res;
+
+   return res;
 }
 
 int main()

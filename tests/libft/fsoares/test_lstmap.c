@@ -56,12 +56,45 @@ int test_single_lstmap(int test_number, t_list **initial, t_list **expected)
 
 int test_lstmap()
 {
-	int res = test_single_lstmap(1, create_list(0), create_list(0));
-	res = test_single_lstmap(2, create_list(1, "hello!"), create_list(1, "__6"));
-	res = test_single_lstmap(3,
-	 	create_list(5, "one", "two", "three", "four", "five"),
-	 	create_list(5, "__3", "__3", "__5", "__4", "__4"));
-	return res;
+   int res = test_single_lstmap(1, create_list(0), create_list(0));
+   
+   res = test_single_lstmap(2, 
+       create_list(1, "hello!"), 
+       create_list(1, "__6")) && res;
+   
+   res = test_single_lstmap(3,
+       create_list(5, "one", "two", "three", "four", "five"),
+       create_list(5, "__3", "__3", "__5", "__4", "__4")) && res;
+       
+   res = test_single_lstmap(4,
+       create_list(3, "a", "bb", "ccc"),
+       create_list(3, "__1", "__2", "__3")) && res;
+       
+   res = test_single_lstmap(5,
+       create_list(4, "test", "case", "map", "func"),
+       create_list(4, "__4", "__4", "__3", "__4")) && res;
+       
+   res = test_single_lstmap(6,
+       create_list(2, "short", "list"),
+       create_list(2, "__5", "__4")) && res;
+       
+   res = test_single_lstmap(7,
+       create_list(6, "1", "22", "333", "4444", "55555", "666666"),
+       create_list(6, "__1", "__2", "__3", "__4", "__5", "__6")) && res;
+       
+   res = test_single_lstmap(8,
+       create_list(1, "single"),
+       create_list(1, "__6")) && res;
+       
+   res = test_single_lstmap(9,
+       create_list(4, "map", "this", "list", "please"),
+       create_list(4, "__3", "__4", "__4", "__6")) && res;
+       
+   res = test_single_lstmap(10,
+       create_list(5, "hello", "world", "how", "are", "you"),
+       create_list(5, "__5", "__5", "__3", "__3", "__3")) && res;
+
+   return res;
 }
 
 int	main()
