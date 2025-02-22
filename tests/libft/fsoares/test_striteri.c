@@ -23,17 +23,38 @@ void to_char_zero(unsigned int i, char *c) {
 	*c = i - i + '0';
 }
 
+void to_upper_at_even(unsigned int i, char *c)
+{
+    if (i % 2 == 0)
+        *c = ft_toupper(*c);
+}
+
+void replace_spaces(unsigned int __attribute__((unused)) i, char *c)
+{
+    if (*c == ' ')
+        *c = '_';
+}
+
+void alternate_case(unsigned int i, char *c)
+{
+    if (i % 2)
+        *c = ft_tolower(*c);
+    else
+        *c = ft_toupper(*c);
+}
+
 int test_striteri()
 {
+    // Existing tests
     int res = single_test_striteri(1, "", add, "{(i, c) => i + c}", "");
     res = single_test_striteri(2, "abcd0 ", add, "{(i, c) => i + c}", "aceg4%") && res;
     res = single_test_striteri(3, "abcdfsdfs", to_char_zero, "{(i, c) => '0'}", "000000000") && res;
-    res = single_test_striteri(4, "123", add, "{(i, c) => i + c}", "246") && res;
-    res = single_test_striteri(5, "   ", add, "{(i, c) => i + c}", "#%'") && res;
-    res = single_test_striteri(6, "aaa", add, "{(i, c) => i + c}", "abc") && res;
-    res = single_test_striteri(7, "000", to_char_zero, "{(i, c) => '0'}", "000") && res;
-    res = single_test_striteri(8, "xyz", add, "{(i, c) => i + c}", "y{|") && res;
-    res = single_test_striteri(9, "\n\n\n", add, "{(i, c) => i + c}", "\v\f\r") && res;
+    res = single_test_striteri(4, "aaa", add, "{(i, c) => i + c}", "abc") && res;
+    res = single_test_striteri(5, "000", to_char_zero, "{(i, c) => '0'}", "000") && res;
+    res = single_test_striteri(6, "hello", to_upper_at_even, "{(i, c) => i % 2 == 0 ? toupper(c) : c}", "HeLlO") && res;
+    res = single_test_striteri(7, "a b c", replace_spaces, "{(i, c) => c == ' ' ? '_' : c}", "a_b_c") && res;
+    res = single_test_striteri(9, "zzzzz", add, "{(i, c) => i + c}", "z{|}~") && res;
+    
     return res;
 }
 

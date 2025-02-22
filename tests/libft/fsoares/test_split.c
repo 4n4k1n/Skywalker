@@ -97,7 +97,7 @@ int test_split()
     expected = init_str_array(3, "abc", "def", NULL);
     res = test_single_split(10, "abc   def", ' ', expected) && res;
     
-    expected = init_str_array(4, "", "", "", NULL);
+    expected = init_str_array(1, NULL);
     res = test_single_split(11, "...", '.', expected) && res;
     
     expected = init_str_array(4, "Test", "With", "Spaces", NULL);
@@ -106,13 +106,13 @@ int test_split()
     expected = init_str_array(3, "a", "b", NULL);
     res = test_single_split(13, "a\nb", '\n', expected) && res;
     
-    expected = init_str_array(5, "", "Text", "", "Here", NULL);
+    expected = init_str_array(3, "Text", "Here", NULL);
     res = test_single_split(14, "##Text##Here", '#', expected) && res;
     
     expected = init_str_array(2, "LongTextWithoutDelimiter", NULL);
     res = test_single_split(15, "LongTextWithoutDelimiter", '@', expected) && res;
     
-    expected = init_str_array(6, "", "1", "22", "333", "4444", NULL);
+    expected = init_str_array(5, "1", "22", "333", "4444", NULL);
     res = test_single_split(16, "|1|22|333|4444", '|', expected) && res;
     
     return res;

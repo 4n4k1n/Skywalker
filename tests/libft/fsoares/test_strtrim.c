@@ -17,7 +17,6 @@ int test_strtrim()
    res = single_test_strtrim(6, "xxxz test with x and z and x . zx xx z", "z x", "test with x and z and x .") && res;
    res = single_test_strtrim(7, " abxfg ", "x", " abxfg ") && res;
    res = single_test_strtrim(8, ".teste, bla ,.,.", ",.", "teste, bla ") && res;
-   res = single_test_strtrim(9, "\t\n Hello \t\n", "\t\n", "Hello") && res;
    res = single_test_strtrim(10, "***hello***", "*", "hello") && res;
    res = single_test_strtrim(11, "   multiple    spaces   ", " ", "multiple    spaces") && res;
    res = single_test_strtrim(12, "12test321", "123", "test") && res;
