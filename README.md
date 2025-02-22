@@ -58,7 +58,7 @@ In linux it will also download and install the necessary packages for it to run.
 admin permission to do that.
 
 ```
-bash -c "$(curl -fsSL https://raw.github.com/4n4k1n/francinette/master/bin/install.sh)"
+bash -c "$(curl -fsSL https://raw.github.com/4n4k1n/francinette-2.0/master/bin/install.sh)"
 ```
 
 The francinette folder will be under your `$HOME` directory (`/Users/<your_username>/`)
@@ -76,7 +76,7 @@ You can also force it from francinette itself:
 If the above does not work you can also execute the command bellow:
 
 ```
-bash -c "$(curl -fsSL https://raw.github.com/4n4k1n/francinette/master/bin/update.sh)"
+bash -c "$(curl -fsSL https://raw.github.com/4n4k1n/francinette-2.0/master/bin/update.sh)"
 ```
 
 
