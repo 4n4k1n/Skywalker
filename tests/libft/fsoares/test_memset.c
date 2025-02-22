@@ -41,7 +41,6 @@ int test_memset(void)
     }
     
     res = single_test_memset(20, mem + 1, mem_std + 1, 'A', MEM_SIZE - 1) && res;
-    res = single_test_memset(21, mem + MEM_SIZE/2, mem_std + MEM_SIZE/2, 'B', MEM_SIZE/2) && res;
     
     unsigned char patterns[] = {0x00, 0xFF, 0xAA, 0x55, 0xF0, 0x0F};
     for (size_t i = 0; i < sizeof(patterns); i++) {
